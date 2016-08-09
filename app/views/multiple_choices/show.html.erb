@@ -1,0 +1,10 @@
+<%= link_to "Survey", survey_path(@multiple_choice.survey) %></br>
+
+<h2>Question: <%= @multiple_choice.question %></h2>
+<h2>Number of Choices: <%= @multiple_choice.choices.count %></h2>
+<h2>Number of Answers <%= @multiple_choice.answers %></h2>
+<% @multiple_choice.choices.each do |choice| %>
+  <%= choice.value %></br>
+<% end %>
+
+<%= link_to "Edit Question", edit_multiple_choice_path(@multiple_choice) %>

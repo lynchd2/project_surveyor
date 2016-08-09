@@ -1,0 +1,10 @@
+<%= link_to "Survey", survey_path(@number_range.survey) %></br>
+
+<h2>Question: <%= @number_range.question %></h2>
+<h2>Lowest number: <%= @number_range.low %></h2>
+<h2>Highest number <%= @number_range.high %></h2>
+<% @number_range.choices.each do |choice| %>
+  <%= choice.value %></br>
+<% end %>
+
+<%= link_to "Edit Question", edit_multiple_choice_path(@number_range) %>

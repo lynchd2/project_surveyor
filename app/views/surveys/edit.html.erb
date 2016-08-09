@@ -1,0 +1,13 @@
+<%= link_to "Back to all surveys", surveys_path %></br>
+
+<%= form_for @survey do |s| %>
+  <%= s.label :title %>
+  <%= s.text_field :title %></br>
+  <%= s.label :description %>
+  <%= s.text_area :description %></br>
+  <%= s.submit :submit %>
+<% end %>
+
+
+<h3>Ready to create questions?</h3>
+Choose either <%= link_to "Multiple Choice", new_survey_multiple_choice_path(@survey) %> or a <%= link_to "Number Range", new_survey_number_range_path(@survey) %> question.

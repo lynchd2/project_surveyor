@@ -1,0 +1,9 @@
+<%= link_to "Back to all surveys", surveys_path %></br>
+
+<%= form_for @survey do |s| %>
+  <%= s.label :title %>
+  <%= s.text_field :title %></br>
+  <%= s.label :description %>
+  <%= s.text_area :description %></br>
+  <%= s.submit :submit %>
+<% end %>

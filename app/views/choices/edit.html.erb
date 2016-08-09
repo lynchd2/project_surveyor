@@ -1,0 +1,8 @@
+This is the one of the choices for the question:</br>
+<%= @choice_parent.question %>
+<%= form_for [@choice_parent, @choice] do |c| %>
+  <%= c.label :value %>
+  <%= c.text_field :value, value: @choice.value if !@choice.value.is_a? Integer %>
+  <%= c.number_field :value, value: @choice.value if @choice.value.is_a? Integer %>
+  <%= c.submit :Submit %>
+<% end %>

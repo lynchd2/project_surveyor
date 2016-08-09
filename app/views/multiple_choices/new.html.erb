@@ -1,0 +1,21 @@
+<%= link_to "Go back to survey", @survey %></br>
+<div class="container">
+  <% if @multiple_choice.errors.any? %>
+    <% @multiple_choice.errors.full_messages.each do |message| %>
+      <h4><%= message %></h4>
+    <% end %>
+  <% end %></br>
+</div>
+<div class="container survey-question-form">
+  <%= form_for [@survey, @multiple_choice], {class: "center"} do |mc|%>
+    <%= mc.label "What is the question?" %>
+    <%= mc.text_field :question %></br>
+    <%= mc.label "How many choices?" %>
+    <%= mc.number_field :number_of_choices %></br>
+    <%= mc.label "How many answers can a person choose?" %>
+    <%= mc.number_field :answers %></br>
+    <%= mc.label "Is this question required?" %>
+    <%= mc.check_box :required %></br>
+    <%= mc.submit :submit %>
+  <% end %>
+</div>

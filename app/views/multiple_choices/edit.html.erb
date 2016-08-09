@@ -1,0 +1,19 @@
+<%= link_to "Go back to question", @multiple_choice %></br>
+
+<%= form_for @multiple_choice do |mc| %>
+  <%= mc.label "What is the question?" %>
+  <%= mc.text_field :question, value: @multiple_choice.question %></br>
+  <%= mc.label "How many answers can a person choose?" %>
+  <%= mc.number_field :answers, value: @multiple_choice.answers %></br>
+  <%= mc.label "Is this question required?" %>
+  <%= mc.check_box :required, value: @multiple_choice.required  %></br>
+  <%= mc.submit :submit %>
+<% end %>
+
+<% @multiple_choice.choices.each do |choice| %>
+  <%= choice.value %>
+  <%= link_to "Edit Choice", edit_multiple_choice_choice_path(choice.choiceable, choice) %>
+  <%= link_to "Delete Choice", multiple_choice_choice_path(choice.choiceable, choice),  method: :delete, data:{confirm: "Are you sure you want to delete that choice?"} %></br></br>
+<% end %>
+<%= link_to "Add a Choice", new_multiple_choice_choice_path(@multiple_choice) %>
+

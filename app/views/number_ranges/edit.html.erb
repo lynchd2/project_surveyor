@@ -1,0 +1,17 @@
+<%= link_to "Go back to question", @number_range  %></br>
+<%= form_for @number_range do |nr| %>
+  <%= nr.label "What is the question?" %>
+  <%= nr.text_field :question, value: @number_range.question %></br>
+  <%= nr.label "How many answers can a person choose?" %>
+  <%= nr.number_field :high, value: @number_range.high %></br>
+  <%= nr.label "Is this question required?" %>
+  <%= nr.check_box :required, value: @number_range.required %></br>
+  <%= nr.submit :submit %>
+<% end %>
+
+<% @number_range.choices.each do |choice| %>
+  <%= choice.value %>
+  <%= link_to "Delete Choice", multiple_choice_choice_path(choice.choiceable, choice),  method: :delete, data:{confirm: "Are you sure you want to delete that choice?"} %></br>
+<% end %>
+
+<%= link_to "Add a Choice", new_number_range_path(choice.choiceable, choice) %>

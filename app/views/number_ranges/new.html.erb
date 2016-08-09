@@ -1,0 +1,21 @@
+<%= link_to "Go back to survey", survey_path(@number_range.survey) %></br>
+<div class="container">
+  <% if @number_range.errors.any? %>
+    <% @number_range.errors.full_messages.each do |message| %>
+      <h4><%= message %></h4>
+    <% end %>
+  <% end %>
+</div>
+<div class="container survey-question-form">
+  <%= form_for [@survey, @number_range] do |mc| %>
+    <%= mc.label "What is the question?" %>
+    <%= mc.text_field :question %></br>
+    <%= mc.label "What is the lowest number value?" %>
+    <%= mc.number_field :low %></br>
+    <%= mc.label "What is the highest number value?" %>
+    <%= mc.number_field :high %></br>
+    <%= mc.label "Is this question required?" %>
+    <%= mc.check_box :required %></br>
+    <%= mc.submit :submit %>
+  <% end %>
+</div>
