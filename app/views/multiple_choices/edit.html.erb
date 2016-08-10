@@ -1,5 +1,13 @@
 <%= link_to "Go back to question", @multiple_choice %></br>
 
+<div class="container">
+  <% if @multiple_choice.errors.any? %>
+    <% @multiple_choice.errors.full_messages.each do |message| %>
+      <h4><%= message %></h4>
+    <% end %>
+  <% end %></br>
+</div>
+
 <%= form_for @multiple_choice do |mc| %>
   <%= mc.label "What is the question?" %>
   <%= mc.text_field :question, value: @multiple_choice.question %></br>
@@ -9,7 +17,7 @@
   <%= mc.check_box :required, value: @multiple_choice.required  %></br>
   <%= mc.submit :submit %>
 <% end %>
-
+<h2>All choices </h2>
 <% @multiple_choice.choices.each do |choice| %>
   <%= choice.value %>
   <%= link_to "Edit Choice", edit_multiple_choice_choice_path(choice.choiceable, choice) %>

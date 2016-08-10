@@ -5,7 +5,6 @@ class NumberRange < ApplicationRecord
   
   validates :low, :high, numericality: true
   validates :question, {presence: true}
-  validate :low_is_lower
 
 
   def low_is_lower
@@ -13,5 +12,7 @@ class NumberRange < ApplicationRecord
       errors.add(:lowest, "cannot be higher or equal to the highest value")
     end
   end
+
+
 
 end

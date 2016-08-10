@@ -26,15 +26,20 @@ class NumberRangesController < ApplicationController
 
   def update
     @number_range = NumberRange.find(params[:id])
+    @survey = @number_range.survey
     if @number_range.update(number_range_params)
       flash[:success] = "Your question has been updated!"
-      redirect_to number_range_path(@number_range)
+      redirect_to edit_survey_path(@survey)
     else
       render :edit
     end
   end
 
   def destroy
+    @number_range = NumberRange.find(params[:id])
+    @survey = @number_range.survey
+    @number_range.destroy
+    redirect_to edit_survey_path(@survey)
   end
 
 

@@ -1,4 +1,13 @@
 <%= link_to "Go back to question", @number_range  %></br>
+
+<div class="container">
+  <% if @number_range.errors.any? %>
+    <% @number_range.errors.full_messages.each do |message| %>
+      <h4><%= message %></h4>
+    <% end %>
+  <% end %>
+</div>
+
 <%= form_for @number_range do |nr| %>
   <%= nr.label "What is the question?" %>
   <%= nr.text_field :question, value: @number_range.question %></br>
@@ -8,10 +17,12 @@
   <%= nr.check_box :required, value: @number_range.required %></br>
   <%= nr.submit :submit %>
 <% end %>
-
+<h2>All choices </h2>
 <% @number_range.choices.each do |choice| %>
   <%= choice.value %>
   <%= link_to "Delete Choice", multiple_choice_choice_path(choice.choiceable, choice),  method: :delete, data:{confirm: "Are you sure you want to delete that choice?"} %></br>
 <% end %>
 
-<%= link_to "Add a Choice", new_number_range_path(choice.choiceable, choice) %>
+<%= link_to "Add a Choice", new_number_range_path(@number_range) %>
+
+

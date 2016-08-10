@@ -2,3 +2,23 @@
 
 <h2>Title: <%= @survey.title %></br></h2>
 <h3>Description: <%= @survey.description %></h3>
+
+<h2> Multiple Choice </h2>
+<% @survey.multiple_choices.each_with_index do |mc_question, index| %>
+  <p>Question Number <%= index + 1 %>.</p> 
+  <%= mc_question.question %></br>
+
+  <% if mc_question.answers > 1 %>
+    <%= collection_check_boxes(mc_question, :choices, mc_question.choices, :value, :value) %>
+  <% else %>
+    <%= collection_radio_buttons(mc_question, :choices, mc_question.choices, :value, :value) %>
+  <% end %></br></br></br>
+
+<% end %>
+
+
+<h2> Number Question</h2>
+<% @survey.number_ranges.each do |nr_question| %>
+  <%= nr_question.question %></br>
+  <%= collection_select(nr_question, :choices, nr_question.choices, :value, :value)%></br></br></br>
+<% end %>

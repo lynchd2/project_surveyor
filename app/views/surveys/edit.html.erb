@@ -7,6 +7,19 @@
   <%= s.text_area :description %></br>
   <%= s.submit :submit %>
 <% end %>
+<h2> Multiple Choice Questions </h2>
+<% @survey.multiple_choices.each do |mc| %>
+  <%= mc.question %>
+  <%= link_to "Edit", edit_multiple_choice_path(mc) %>
+  <%= link_to "Delete", multiple_choice_path(mc), method: :delete %></br></br>
+<% end %>
+
+<h2> Number Range Questions </h2>
+<% @survey.number_ranges.each do |nr| %>
+  <%= nr.question %>
+  <%= link_to "Edit", edit_number_range_path(nr) %>
+  <%= link_to "Delete", number_range_path(nr), method: :delete %></br></br>
+<% end %>
 
 
 <h3>Ready to create questions?</h3>

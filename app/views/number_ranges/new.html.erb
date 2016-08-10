@@ -1,4 +1,5 @@
 <%= link_to "Go back to survey", survey_path(@number_range.survey) %></br>
+
 <div class="container">
   <% if @number_range.errors.any? %>
     <% @number_range.errors.full_messages.each do |message| %>
@@ -6,6 +7,7 @@
     <% end %>
   <% end %>
 </div>
+
 <div class="container survey-question-form">
   <%= form_for [@survey, @number_range] do |mc| %>
     <%= mc.label "What is the question?" %>

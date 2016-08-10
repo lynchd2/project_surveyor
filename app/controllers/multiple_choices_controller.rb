@@ -26,15 +26,20 @@ class MultipleChoicesController < ApplicationController
 
   def update
     @multiple_choice = MultipleChoice.find(params[:id])
+    @survey = @multiple_choice.survey
     if @multiple_choice.update(multiple_choice_params)
       flash[:success] = "Your question has been updated!"
-      redirect_to multiple_choice_path(@multiple_choice)
+      redirect_to edit_survey_path(@survey)
     else
       render :edit
     end 
   end
 
   def destroy
+    @multiple_choice = MultipleChoice.find(params[:id])
+    @survey = @multiple_choice.survey
+    @multiple_choice.destroy
+    redirect_to edit_survey_path(@survey)
   end
 
 
